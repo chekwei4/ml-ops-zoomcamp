@@ -4,4 +4,4 @@
 */data/*
 */output/*
 mlflow.db
-./week_2/mlruns/*
+/week_2/mlruns/*
