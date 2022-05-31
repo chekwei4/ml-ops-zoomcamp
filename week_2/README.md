@@ -63,7 +63,7 @@ mlflow.set_experiment("my-brand-new-experiment")
 ```
 The backend DB which we initiated was `sqlite:///mlflow.db`, so we will use that as our `tracking_uri`.
 
-Below is a sample way to log metrics, create tags, and alpha value for a linear regression experiment run. 
+Below is a sample way to log metrics, create tags, and alpha value for a lasso regression experiment run. 
 
 ```python
 with mlflow.start_run():
@@ -82,3 +82,5 @@ with mlflow.start_run():
     rmse = mean_squared_error(y_val, y_pred, squared=False)
     mlflow.log_metric("rmse", rmse)
 ```
+Remember: Launch `mlflow` from the **same folder** as the file (Eg. train.py or test.py) which you will run.
+
