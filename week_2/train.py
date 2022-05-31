@@ -27,6 +27,7 @@ def run(data_path):
         y_pred = rf.predict(X_valid)
         rmse = mean_squared_error(y_valid, y_pred, squared=False)
 
+        mlflow.log_artifact("artifacts/", artifact_path="preprocessor")
 
 if __name__ == '__main__':
 

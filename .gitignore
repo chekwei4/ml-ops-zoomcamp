@@ -4,4 +4,6 @@
 */data/*
 */output/*
 mlflow.db
-/week_2/mlruns/*
+mydb.sqlite
+week_2/mlruns
+week_2/artifacts
