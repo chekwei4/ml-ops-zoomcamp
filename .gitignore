@@ -3,3 +3,5 @@
 .DS_Store
 */data/*
 */output/*
+mlflow.db
+./week_2/mlruns/*
