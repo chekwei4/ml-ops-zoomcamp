@@ -17,6 +17,16 @@
 - Saving and loading models with MLflow
 - Promoting best model to Model registry
 
+## Week 3 - Orchestration and ML Pipelines
+[Notes](https://github.com/chekwei4/ml-ops-zoomcamp/tree/main/week_3)
+- Workflow orchestration
+- Prefect 2.0
+    - Concept of task and flow
+    - Work-queues and agents
+    - Previewing work-queues and view scheduled runs
+    - IntervalSchedule vs CronSchedule
+
+
 credits: DataTalksCub
 
 author: chekwei
