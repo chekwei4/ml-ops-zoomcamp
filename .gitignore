@@ -8,3 +8,4 @@ mlflow.db
 mydb.sqlite
 week_2/mlruns
 week_2/artifacts
+*.pyc
