@@ -14,8 +14,10 @@
 - Experiment tracking intro
 - Getting started with MLflow
 - Experiment tracking with MLflow
+  - Run hyperparameter tuning using Hyperopt, and then logging all the run results in MLflow
 - Saving and loading models with MLflow
 - Promoting best model to Model registry
+    - Filter out some of the best performing models on validation sets, run them through test set, thereby promoting the best model to model registry
 
 ## Week 3 - Orchestration and ML Pipelines
 [Notes](https://github.com/chekwei4/ml-ops-zoomcamp/tree/main/week_3)
