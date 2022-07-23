@@ -34,7 +34,6 @@ def prepare_features(df, categorical, train=True):
     # rest of task below
 ```
 
-
 ### User Interface
 To spin up the Prefect Orion UI:
 ```
@@ -76,7 +75,7 @@ By doing so, we can preview the list of runs/activities that are scheduled.
 ```
 
 ### Deployment
-We can define the `DeploymentSpec` in order to deploy our codes to Prefect.
+We can define the `DeploymentSpec` in order to deploy our codes to Prefect. Here, we can specify if we want to run the job using `IntervalSchedule` or `CronSchedule`. 
 
 ```python
 from prefect.deployments import DeploymentSpec
@@ -109,3 +108,28 @@ To create the deployment, we can execute below command:
 ```
 prefect deployment create prefect_deploy.py
 ```
+
+## Prefect Project 
+Training ata used here is the [For-Hire-Vehicle Trip Records 2021 January and February](https://d37ci6vzurychx.cloudfront.net/trip-data/fhv_tripdata_2021-01.parquet)
+
+The tasks created for the flow are:
+- `read_data`
+- `prepare_features`
+- `train_model`
+- `run_model`
+
+In this project, we are creating a workflow that runs on 15th of every month, at 9AM. 
+
+The workflow will download data from URL provided. The workflow uses the data from 2 months back as the training data and the data from the previous month as validation data.
+
+Eg. If the date passed is "2021-03-15", the training data should be `fhv_tripdata_2021-01.parquet` and the validation file will be `fhv_trip_data_2021-02.parquet`.
+
+Below screenshot shows that we are scheduling one run every month. The last run was successful in July, hence green in color. The next three runs (based on the date time filtering I have applied on the search bar) are labelled as "scheduled", hence orange in color. 
+<p align="center">
+    <img src="prefect_a.png">
+</p>
+
+Below screenshot shows what happened during the July's run.
+<p align="center">
+    <img src="prefect_b.png">
+</p>
