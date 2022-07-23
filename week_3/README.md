@@ -109,8 +109,8 @@ To create the deployment, we can execute below command:
 prefect deployment create prefect_deploy.py
 ```
 
-## Prefect Project 
-Training ata used here is the [For-Hire-Vehicle Trip Records 2021 January and February](https://d37ci6vzurychx.cloudfront.net/trip-data/fhv_tripdata_2021-01.parquet)
+## Prefect Mini-Project 
+Training ata used here is the [For-Hire-Vehicle Trip Records 2021 January and February](https://d37ci6vzurychx.cloudfront.net/trip-data/fhv_tripdata_2021-01.parquet).
 
 The tasks created for the flow are:
 - `read_data`
