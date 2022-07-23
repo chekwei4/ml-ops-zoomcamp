@@ -134,5 +134,5 @@ Below screenshot shows what happened during the July's run.
 We can see that the training and validation dataset were downloaded and ingested for training correctly. Thereafter, we can see that the MSE for validation was 11.63. 
 
 <p align="center">
-    <img src="prefect_b.png">
+    <img src="prefect.png">
 </p>
