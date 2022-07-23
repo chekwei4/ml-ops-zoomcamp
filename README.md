@@ -27,6 +27,14 @@
     - Work-queues and agents
     - Previewing work-queues and view scheduled runs
     - IntervalSchedule vs CronSchedule
+- Created a mini project that downloaded, ingested, trained and validated on datasets automatically based on a scheduled interval time period. 
+
+
+## Week 4 - Deploying Models with Flask and Docker
+- Creating a new virtual environment
+- Create a script for prediction
+- Put script into Flask app
+- Dockerize the app
 
 
 credits: DataTalksCub
