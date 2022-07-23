@@ -82,3 +82,68 @@ with mlflow.start_run():
     rmse = mean_squared_error(y_val, y_pred, squared=False)
     mlflow.log_metric("rmse", rmse)
 ```
+
+## Hyperparameter Tuning with Hyperopt
+In this project, a straightforward model (`Random Forest Regressor`) was deployed with the aim to perform hyperparameter tuning using Hyperopt.
+
+The training data used was [Green Taxi Trip Records for January 2021](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page). 
+
+The validation data used was [Green Taxi Trip Records for February 2021](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page). 
+
+The loss function (key metric) for hyperparameter tuning was to minimize the RMSE. 
+
+Below are the 4 hyperparamters involved in tunining and the number of parameter evaluations for the optimizers to explore is `50`:
+
+```python
+search_space = {
+        'max_depth': scope.int(hp.quniform('max_depth', 1, 20, 1)),
+        'n_estimators': scope.int(hp.quniform('n_estimators', 10, 50, 1)),
+        'min_samples_split': scope.int(hp.quniform('min_samples_split', 2, 10, 1)),
+        'min_samples_leaf': scope.int(hp.quniform('min_samples_leaf', 1, 4, 1))
+    }
+```
+
+Below screenshot from MLflow was the results from running 50 evaluations:
+<p align="center">
+    <img src="MLflow_Q5.png">
+</p>
+
+The best parameters and RMSE found were:
+- `max_depth`: 19
+
+- `min_samples_leaf`: 3
+
+- `min_samples_split`: 5
+
+- `n_estimators`: 28
+
+- `RMSE`:  	6.628
+
+<p align="center">
+    <img src="MLflow_Q5a.png">
+</p>
+
+## Promoting Best Model to Model Registry
+From above Hyperopt tuning, we have explored 50 runs and found some of the best hyperparameters that yield the lowest RMSE for validation set. 
+
+Here, we will check through the 50 runs, choose the top 5 models that yield the best (lowest) RMSE on validation set, and run them through the test set.
+
+The test data used was [Green Taxi Trip Records for March 2021](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page). 
+
+The best model will be the one which yields the lowest RMSE on test set, and we will want to promote the model to the model registry. 
+
+
+The goal here is to select the model that yields the lowest RMSE on the test set, and register it to the model registry. 
+
+We can see that the "best" model is run `Run 2a9fa822e8844716ad40ef5f6ada5e8b` with
+- `test RMSE`: 6.549
+- `duration`: 6.6s
+
+<p align="center">
+    <img src="MLflow_Q6.png">
+</p>
+
+The full path of the model artifacts can be found here `./mlruns/1/2a9fa822e8844716ad40ef5f6ada5e8b/artifacts/model`
+<p align="center">
+    <img src="MLflow_Q6a.png">
+</p>

@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 
 mlflow.set_tracking_uri("http://127.0.0.1:5000")
-mlflow.set_experiment("random-forest-hyperopt")
+mlflow.set_experiment("random-forest-hyper-param-tuning")
 
 
 def load_pickle(filename):
@@ -26,10 +26,12 @@ def run(data_path, num_trials):
     def objective(params):
         with mlflow.start_run():
             rf = RandomForestRegressor(**params)
+            # we need to log the parameters passed into the random forest
             mlflow.log_params(params)
             rf.fit(X_train, y_train)
             y_pred = rf.predict(X_valid)
             rmse = mean_squared_error(y_valid, y_pred, squared=False)
+            # we need to log the metric - RMSE
             mlflow.log_metric("rmse", rmse)
             return {'loss': rmse, 'status': STATUS_OK}
 

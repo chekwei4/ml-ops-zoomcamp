@@ -5,6 +5,8 @@ import pickle
 import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
 
+import logging
+logging.basicConfig(level=logging.INFO)
 
 def dump_pickle(obj, filename):
     with open(filename, "wb") as f_out:
@@ -84,3 +86,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     run(args.raw_data_path, args.dest_path)
+    logging.info("script completed...")

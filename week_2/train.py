@@ -8,7 +8,7 @@ import mlflow
 
 
 mlflow.set_tracking_uri("sqlite:///mlflow.db")
-mlflow.set_experiment("green-nyc-taxi-experiment-chek")
+mlflow.set_experiment("random-forest-experiment-chekwei")
 
 def load_pickle(filename: str):
     with open(filename, "rb") as f_in:
@@ -28,6 +28,7 @@ def run(data_path):
         rmse = mean_squared_error(y_valid, y_pred, squared=False)
 
         mlflow.log_artifact("artifacts/", artifact_path="preprocessor")
+        mlflow.log_metric("rmse", rmse)
 
 if __name__ == '__main__':
 
